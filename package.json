@@ -1,0 +1,34 @@
+{
+  "name": "cypress_cucumber_buger_eats",
+  "version": "1.0.0",
+  "description": "Projeto de testes da aplicação Buger Eats em Cypress com uma abordagem usando cucumber",
+  "scripts": {
+    "clean:reports": "rm -rf cypress/reports",
+    "pretest": "yarn clean:reports",
+    "scripts": "cypress run --browser firefox",
+    "posttest": "node cucumber-html-report.js",
+    "test": "yarn scripts || yarn posttest"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "cucumber-html-reporter": "^5.5.0",
+    "cypress": "^9.3.1",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-file-upload": "^5.0.8",
+    "faker": "5.5.3",
+    "gerador-validador-cpf": "^5.0.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "step_definitions": "cypress/integration/stepsDefinitions",
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/reports/cucumber-json",
+      "filePrefix": "",
+      "fileSufix": ".cucumber"
+    }
+  },
+  "dependencies": {
+    "multiple-cucumber-html-reporter": "^1.18.3"
+  }
+}
